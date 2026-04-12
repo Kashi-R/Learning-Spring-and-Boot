@@ -22,14 +22,11 @@ public class DemoJdbc {
         System.out.println("Connection Established");
         Statement st=con.createStatement();
         ResultSet rs =st.executeQuery(sql);
-//        System.out.println(rs.next());//pointer comes to first.
-//
-//        String name = rs.getString("name");
-//        System.out.println("Name of Students are : "+name);
 
-//        while(rs.next()){
-//            System.out.print(rs.getInt(1)+ "-");
+
 //            System.out.print(rs.getString(2)+ "-");
+//            System.out.print(rs.getInt(1)+ "-");
+//        while(rs.next()){
 //            System.out.println(rs.getInt(3));
 //            }
             while(rs.next()){
