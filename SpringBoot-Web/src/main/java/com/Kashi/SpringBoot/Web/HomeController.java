@@ -15,7 +15,7 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("add")
+    @RequestMapping("/addAlien")
    /** public String add(HttpServletRequest req, HttpSession session){
 
         int num1 = Integer.parseInt(req.getParameter("num1"));
@@ -27,12 +27,13 @@ public class HomeController {
     * */
 
 
-    public ModelAndView add(int num1, @RequestParam("num2") int nu, ModelAndView mv){
+    public ModelAndView addAlien(@RequestParam int aid, @RequestParam String aname, ModelAndView mv){
 
-        int result = num1 + nu ;
-        System.out.println(result);
+        Alien alien = new Alien();
+        alien.setAid(aid);
+        alien.setAname(aname);
 
-        mv.addObject("result",result);
+        mv.addObject("alien",alien);
         mv.setViewName("result");
 //        System.out.println("add method called");
         return mv;
