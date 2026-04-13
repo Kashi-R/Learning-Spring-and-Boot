@@ -15,31 +15,17 @@ public class DemoJdbc {
             String url="jdbc:postgresql://localhost:5432/demo" ;
             String uname="postgres";
             String pass="Kashi@321";
-            String sql="select * from student ";
+            String sql="update student set name = 'Max' where sid =5";
             Class.forName("org.postgresql.Driver");
 
         Connection con = DriverManager.getConnection(url,uname,pass);
         System.out.println("Connection Established");
         Statement st=con.createStatement();
-        ResultSet rs =st.executeQuery(sql);
+        boolean status =st.execute(sql);
+        System.out.println(status);// This gives false if the query
+        //is updation type insert, updt, dlt, AND true for rs type from table show etc
 
-
-//            System.out.print(rs.getString(2)+ "-");
-//            System.out.print(rs.getInt(1)+ "-");
-//        while(rs.next()){
-//            System.out.println(rs.getInt(3));
-//            }
-            while(rs.next()){
-            ResultSetMetaData meta = rs.getMetaData();
-            int colCount = meta.getColumnCount();
-
-            int colIndex = 1;
-            while (colIndex <= colCount) {
-                System.out.print( rs.getString(colIndex) + " | ");
-                colIndex++;
-            }
-            System.out.println();
-        }
+//
         con.close();
         System.out.println("Connection closed");
 
