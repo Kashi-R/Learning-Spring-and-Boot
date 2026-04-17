@@ -18,12 +18,12 @@ public class DemoJdbc {
             String url="jdbc:postgresql://localhost:5432/demo" ;
             String uname="postgres";
             String pass="Kashi@321";
-            String sql="insert into student values (?,?,?)";
+            String sql="insert into student values(" + sid+ ",'" +name+ "'," +marks + ")";
             Class.forName("org.postgresql.Driver");
 
         Connection con = DriverManager.getConnection(url,uname,pass);
         System.out.println("Connection Established");
-        PreStatement st=con.createStatement();
+        Statement st=con.createStatement();
         boolean status =st.execute(sql);
         System.out.println(status);// This gives false if the query
         //is updation type insert, updt, dlt, AND true for rs type from table show etc
