@@ -13,24 +13,25 @@ public class DemoJdbc {
         close
          */
             int sid = 102;
-            String name = "Max";
-            int marks = 51;
+//            String name = "Hari";
+//            int marks = 34;
             String url="jdbc:postgresql://localhost:5432/demo" ;
             String uname="postgres";
             String pass="Kashi@321";
-            String sql="insert into student values(" + sid+ ",'" +name+ "'," +marks + ")";
+            String sql="DELETE FROM student WHERE sid = ?";
             Class.forName("org.postgresql.Driver");
 
         Connection con = DriverManager.getConnection(url,uname,pass);
-        System.out.println("Connection Established");
-        Statement st=con.createStatement();
-        boolean status =st.execute(sql);
-        System.out.println(status);// This gives false if the query
-        //is updation type insert, updt, dlt, AND true for rs type from table show etc
 
-//
+        PreparedStatement st=con.prepareStatement(sql);
+        st.setInt(1,sid);
+//        st.setString(2,name);
+//        st.setInt(3,marks);
+        st.execute();
+//     OR   st.executeUpdate();
+
         con.close();
-        System.out.println("Connection closed");
+
 
 
     }
