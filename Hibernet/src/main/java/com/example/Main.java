@@ -5,44 +5,37 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.beans.Transient;
+
 
 public class Main {
     public static void main(String[] args) {
-        //create new student
-        Student s1 = new Student();
-        s1.setName("Manika");
-        s1.setRollNo(2);
-        s1.setsAge(15);
 
-        //fetch date
-        Student s2 = null;
+        Alien a1 = new Alien();
+        a1.setAid(101);
+        a1.setAname("Kashi");
 
-        //update
-        Student s3 = new Student();
-        s3.setName("Ananta");
-        s3.setRollNo(10);
-        s3.setsAge(21);
+
+//        @Transient
+//        sometime in production we want some data to in object, but not in DB
+//        inthat case we use @Trasient,so for that column will not be created
+        a1.setTech("JAVA");
 
         Configuration cfg = new Configuration();
-        cfg.addAnnotatedClass(com.example.Student.class);
+        cfg.addAnnotatedClass(com.example.Alien.class);
         cfg.configure("hibernate.cfg.xml");
 
         SessionFactory sf= cfg.buildSessionFactory();
         Session session = sf.openSession();
 
-        s2 = session.find(Student.class,2);
-
 
 
         Transaction transaction = session.beginTransaction();
 
-        //session.persist(s1);
-        session.merge(s3);
+        session.persist(a1);
 
         transaction.commit();
         session.close();
         sf.close();
-
-        System.out.println(s2.getName());
     }
 }
