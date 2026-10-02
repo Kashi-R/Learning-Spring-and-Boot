@@ -11,14 +11,21 @@ import java.beans.Transient;
 public class Main {
     public static void main(String[] args) {
 
+        Laptop lap= new Laptop();
+        lap.setBrand("Asus");
+        lap.setModel("Rog");
+        lap.setRam(16);
+
+
         Alien a1 = new Alien();
         a1.setAid(101);
         a1.setAname("Kashi");
+        a1.setLaptop(lap);
 
 
 //        @Transient
 //        sometime in production we want some data to in object, but not in DB
-//        inthat case we use @Trasient,so for that column will not be created
+//        in that case we use @Trasient,so for that column will not be created
         a1.setTech("JAVA");
 
         Configuration cfg = new Configuration();
@@ -35,6 +42,9 @@ public class Main {
         session.persist(a1);
 
         transaction.commit();
+
+        Alien a2 = session.find(Alien.class, 101);
+        System.out.println(a2);
         session.close();
         sf.close();
     }
