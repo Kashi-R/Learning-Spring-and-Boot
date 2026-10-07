@@ -71,6 +71,8 @@ public class Main {
         Session session1 = sf.openSession();
         Alien a5 = session1.find(Alien.class, 101);
         System.out.println(a5);
+        //commented the above line gives lazy fetch , which not fires for list .
+        //when we ask it gives the whole query, for uncommented
         session1.close();
         sf.close();
     }
