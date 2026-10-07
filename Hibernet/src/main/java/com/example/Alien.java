@@ -11,7 +11,8 @@ public class Alien {
     private int aid;
     private String aname;
     private String tech;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+    //By default it is lazy fetch , but when we write eager, then it fires all query, still if we dont ask for  it.
     private List<Laptop> laptops;
 
     public int getAid() {
