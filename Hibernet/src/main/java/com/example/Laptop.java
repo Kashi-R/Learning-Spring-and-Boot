@@ -3,6 +3,7 @@ package com.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Laptop {
@@ -13,6 +14,9 @@ public class Laptop {
     private String brand;
     private String model;
     private int ram;
+    @ManyToOne
+    private Alien alien;
+
 
     public int getLid() {
         return lid;
@@ -46,14 +50,21 @@ public class Laptop {
         this.ram = ram;
     }
 
+    public Alien getAlien() {
+        return alien;
+    }
+
+    public void setAlien(Alien alien) {
+        this.alien = alien;
+    }
+
     @Override
     public String toString() {
         return "Laptop{" +
-                "brand='" + brand + '\'' +
-                ", lid=" + lid +
+                "ram=" + ram +
                 ", model='" + model + '\'' +
-                ", ram=" + ram +
+                ", lid=" + lid +
+                ", brand='" + brand + '\'' +
                 '}';
     }
-
 }

@@ -34,6 +34,9 @@ public class Main {
 //        in that case we use @Trasient,so for that column will not be created
         a1.setTech("JAVA");
 
+        l1.setAlien(a1);
+        l2.setAlien(a1);
+
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(com.example.Alien.class);
         cfg.addAnnotatedClass(com.example.Laptop.class);
