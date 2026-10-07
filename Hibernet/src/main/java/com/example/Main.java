@@ -24,8 +24,10 @@ public class Main {
 
 //        select*from laptop where ram=32------------>SQL
 //        from Laptop where ram=32
-
-        Query query = session.createQuery("from Laptop where ram=32",Laptop.class);
+        String brand = "Asus";
+//when we have to fetch data from external data source;
+        Query query = session.createQuery("from Laptop where brand like ?1",Laptop.class);
+        query.setParameter(1,brand);
         List<Laptop> laptops= query.getResultList();
 //        Laptop l1= session.find(Laptop.class, 1);
         System.out.println(laptops);
