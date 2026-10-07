@@ -26,10 +26,14 @@ public class Main {
 //        from Laptop where ram=32
         String brand = "Asus";
 //when we have to fetch data from external data source;
-        Query query = session.createQuery("select model from Laptop where brand like ?1");
+        Query query = session.createQuery("select brand,model from Laptop where brand like ?1");
         query.setParameter(1,brand);
-        List<String> laptops= query.getResultList();
+        List<Object[]> laptops= query.getResultList();
 //        Laptop l1= session.find(Laptop.class, 1);
+
+        for(Object[] data:laptops){
+            System.out.println((String) data[0]+" "+(String)data[1]);
+        }
         System.out.println(laptops);
          session.close();
 
