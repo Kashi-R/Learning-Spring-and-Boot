@@ -4,19 +4,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.beans.Transient;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class Main {
     public static void main(String[] args) {
-
-        Laptop l1= new Laptop();
-        l1.setLid(4);
-        l1.setBrand("Lenovo");
-        l1.setModel("Legeion");
-        l1.setRam(32);
 
 
         Configuration cfg = new Configuration();
@@ -26,18 +22,14 @@ public class Main {
         SessionFactory sf= cfg.buildSessionFactory();
         Session session = sf.openSession();
 
+//        select*from laptop where ram=32------------>SQL
+//        from Laptop where ram=32
 
-
-        Transaction transaction = session.beginTransaction();
-
-        session.persist(l1);
-
-
-        transaction.commit();
-
-
-        session.close();
-
+        Query query = session.createQuery("from Laptop where ram=32",Laptop.class);
+        List<Laptop> laptops= query.getResultList();
+//        Laptop l1= session.find(Laptop.class, 1);
+        System.out.println(laptops);
+         session.close();
 
         sf.close();
     }
