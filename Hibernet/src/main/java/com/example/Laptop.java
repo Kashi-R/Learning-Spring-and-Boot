@@ -18,9 +18,6 @@ public class Laptop {
     private String model;
     private int ram;
 
-    @ManyToMany(mappedBy = "laptops")
-    //mapping is done by alien class object, which is laptops, also we can mapped aliens in Allien.java
-    private List<Alien> aliens;
 
     public int getLid() {
         return lid;
@@ -52,15 +49,6 @@ public class Laptop {
 
     public void setRam(int ram) {
         this.ram = ram;
-    }
-
-
-    public List<Alien> getAliens() {
-        return aliens;
-    }
-
-    public void setAliens(List<Alien> aliens) {
-        this.aliens = aliens;
     }
 
 

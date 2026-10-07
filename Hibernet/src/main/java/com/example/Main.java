@@ -42,19 +42,8 @@ public class Main {
         a2.setAname("Bibek");
         a2.setTech("JAVA Script");
 
-        Alien a3 = new Alien();
-        a3.setAid(103);
-        a3.setAname("Jitu");
-        a3.setTech("Python");
-
         a1.setLaptops(Arrays.asList(l1,l2));
-        a2.setLaptops(Arrays.asList(l2,l3));
-        a3.setLaptops(Arrays.asList(l1));
-
-        l1.setAliens(Arrays.asList(a1,a3));
-        l2.setAliens(Arrays.asList(a1,a2));
-        l3.setAliens(Arrays.asList(a2));
-
+        a2.setLaptops(Arrays.asList(l3));
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(com.example.Alien.class);
         cfg.addAnnotatedClass(com.example.Laptop.class);
@@ -73,12 +62,11 @@ public class Main {
 
         session.persist(a1);
         session.persist(a2);
-        session.persist(a3);
 
         transaction.commit();
 
-        Alien a5 = session.find(Alien.class, 103);
-        System.out.println(a5);
+        Alien a5 = session.find(Alien.class, 101);
+//        System.out.println(a5);
         session.close();
         sf.close();
     }
