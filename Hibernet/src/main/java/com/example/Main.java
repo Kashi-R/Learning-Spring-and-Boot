@@ -70,7 +70,7 @@ public class Main {
 
         Session session1 = sf.openSession();
         Alien a5 = session1.find(Alien.class, 101);
-//        System.out.println(a5);
+        System.out.println(a5);
         session1.close();
         sf.close();
     }
