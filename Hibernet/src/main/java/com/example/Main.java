@@ -65,9 +65,13 @@ public class Main {
 
         transaction.commit();
 
-        Alien a5 = session.find(Alien.class, 101);
-//        System.out.println(a5);
+
         session.close();
+
+        Session session1 = sf.openSession();
+        Alien a5 = session1.find(Alien.class, 101);
+//        System.out.println(a5);
+        session1.close();
         sf.close();
     }
 }
