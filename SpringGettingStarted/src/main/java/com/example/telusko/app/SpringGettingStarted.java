@@ -10,6 +10,7 @@ public class SpringGettingStarted {
 	public static void main(String[] args) {
 		ApplicationContext context=SpringApplication.run(SpringGettingStarted.class, args);
 		Alien alien = context.getBean(Alien.class) ;
+		System.out.println(alien.getAge());
 		alien.code();
 //		Laptop laptop=context.getBean(Laptop.class);
 //		laptop.compile();

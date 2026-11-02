@@ -1,0 +1,4 @@
+<bean id="alien" class="com.telusko.Alien">
+
+
+</bean>
