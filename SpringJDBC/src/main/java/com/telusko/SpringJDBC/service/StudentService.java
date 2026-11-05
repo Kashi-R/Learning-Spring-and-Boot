@@ -27,7 +27,7 @@ public class StudentService {
     }
 
     public List<Student> getStudents() {
-        System.out.println("These are the students found in the database🔥⤵️");
+//        System.out.println("These are the students found in the database🔥⤵️");
         return repo.findAll();
     }
 }
